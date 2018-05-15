@@ -26,7 +26,7 @@ STAGES = ["┏━━┓\n┃\n┃\n┃\n┻━\n",
           "┏━━┓\n┃  O\n┃ /|\n┃\n┻━\n",
           "┏━━┓\n┃  O\n┃ /|\\\n┃\n┻━\n",
           "┏━━┓\n┃  O\n┃ /|\\\n┃ /\n┻━\n",
-          "┏━━┓\n┃  O\n┃ /|\\\n┃ / \\n┻━\n"]
+          "┏━━┓\n┃  O\n┃ /|\\\n┃ / \\\n┻━\n"]
 
 
 def openingmenu():
@@ -52,7 +52,7 @@ def game():
 
         currstage += 1
         if currstage > 5:
-            print("Game over")
+            print("Game over\n")
             break
 
 
