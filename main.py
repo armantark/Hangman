@@ -56,7 +56,6 @@ def game():
         print(list(reversed(list(usedletters))))
         while len(currletter) != 1 or not currletter.isalpha():
             currletter = input("What is your letter to guess?\n")
-        usedletters.add(currletter)
         i = 0
         indices = []
         for letter in guessingword:
@@ -65,8 +64,10 @@ def game():
             i += 1
         if len(indices) == 0:
             print("Strike!\n")
+            usedletters.add(currletter)
             currstage += 1
-            if currstage >= 5:
+            if currstage >= 6:
+                print(STAGES[currstage])
                 print("Game over\nThe word was " + guessingword + "\n")
                 break
         for index in indices:
