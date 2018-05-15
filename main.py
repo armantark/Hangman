@@ -1,26 +1,33 @@
 import random
 
 clear = "\n" * 100
+
+
 def randomizeWord():
-    global guessingword = random.choice(WORDS)
+    global guessingword
+    guessingword = random.choice(WORDS)
     print(clear)
 
+
 def customizeWord():
+    global guessingword
     guessingword = input("Enter your custom word: ")
     print(clear)
+
 
 guessingword = ""
 quitGame = ""
 word_file = "/usr/share/dict/words"
 WORDS = open(word_file).read().splitlines()
 
-STAGE0 = "┏━━┓\n┃\n┃\n┃\n┻━\n"
-STAGE1 = "┏━━┓\n┃  O\n┃\n┃\n┻━\n"
-STAGE2 = "┏━━┓\n┃  O\n┃  |\n┃\n┻━\n"
-STAGE3 = "┏━━┓\n┃  O\n┃ /|\n┃\n┻━\n"
-STAGE4 = "┏━━┓\n┃  O\n┃ /|\\\n┃\n┻━\n"
-STAGE5 = "┏━━┓\n┃  O\n┃ /|\\\n┃ /\n┻━\n"
-STAGE6 = "┏━━┓\n┃  O\n┃ /|\\\n┃ / \\n┻━\n"
+STAGES = ["┏━━┓\n┃\n┃\n┃\n┻━\n",
+          "┏━━┓\n┃  O\n┃\n┃\n┻━\n",
+          "┏━━┓\n┃  O\n┃  |\n┃\n┻━\n",
+          "┏━━┓\n┃  O\n┃ /|\n┃\n┻━\n",
+          "┏━━┓\n┃  O\n┃ /|\\\n┃\n┻━\n",
+          "┏━━┓\n┃  O\n┃ /|\\\n┃ /\n┻━\n",
+          "┏━━┓\n┃  O\n┃ /|\\\n┃ / \\n┻━\n"]
+
 
 def openingmenu():
     answer = 0
@@ -33,11 +40,24 @@ def openingmenu():
     elif answer == 2:
         customizeWord()
 
+
 def game():
+    win = False
+    currstage = 0
+    currguess = ""
+    for _ in range(len(guessingword)):
+        currguess.join("_")
+    while not win:
+        print(STAGES[currstage])
+
+        currstage += 1
+        if currstage > 5:
+            print("Game over")
+            break
+
+
 
 while quitGame != 'y':
     openingmenu()
-
-
-
-
+    game()
+    quitGame = input("Play again? [y] or [n]\n")
